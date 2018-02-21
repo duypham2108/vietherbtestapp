@@ -1,0 +1,10 @@
+{% if all_plants %}
+	<h2>Plant list:</h2>
+	<ul>
+		{% for plant in all_plants %}
+		<li><a href="/plant/{{ plant.plant_id }}">{{ plant.plant_engname }}</a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<h3> Không có cây nào cả </h3>
+{% endif %}
