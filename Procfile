@@ -1,1 +1,1 @@
-web: gunicorn myproject.wsgi --preload --log-file -
+web: gunicorn vietherb.wsgi --preload --log-file -
