@@ -79,9 +79,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'vietherb_django',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'USER': 'b96ff810b08980',
+        'PASSWORD': '4792ed39',
+        'HOST': 'us-cdbr-iron-east-05.cleardb.net',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 
