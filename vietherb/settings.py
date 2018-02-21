@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'vietherb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'vietherb_django',
+        'NAME': 'heroku_078720f3a48fcab',
         'USER': 'b96ff810b08980',
         'PASSWORD': '4792ed39',
         'HOST': 'us-cdbr-iron-east-05.cleardb.net',   # Or an IP Address that your DB is hosted on
