@@ -179,7 +179,7 @@ class Plant(models.Model):
 
 
 class PlantHasDistribution(models.Model):
-    plant = models.ForeignKey(Plant, models.DO_NOTHING, db_column='Plant_id', primary_key=True)  # Field name made lowercase.
+    plant = models.ForeignKey(Plant, models.DO_NOTHING, db_column='Plant_id', primary_key=False)  # Field name made lowercase.
     distribution = models.ForeignKey(Distribution, models.DO_NOTHING, db_column='Distribution_id')  # Field name made lowercase.
 
     class Meta:
@@ -189,7 +189,7 @@ class PlantHasDistribution(models.Model):
 
 
 class PlantHasMetabolite(models.Model):
-    plant = models.ForeignKey(Plant, models.DO_NOTHING, db_column='Plant_id', primary_key=True)  # Field name made lowercase.
+    plant = models.ForeignKey(Plant, models.DO_NOTHING, db_column='Plant_id', primary_key=False)  # Field name made lowercase.
     metabolite = models.ForeignKey(Metabolite, models.DO_NOTHING, db_column='Metabolite_id')  # Field name made lowercase.
 
     class Meta:
@@ -199,7 +199,7 @@ class PlantHasMetabolite(models.Model):
 
 
 class PlantHasTherapeuticEffects(models.Model):
-    plant = models.ForeignKey(Plant, models.DO_NOTHING, db_column='Plant_id', primary_key=True)  # Field name made lowercase.
+    plant = models.ForeignKey(Plant, models.DO_NOTHING, db_column='Plant_id', primary_key=False)  # Field name made lowercase.
     thera = models.ForeignKey('TherapeuticEffects', models.DO_NOTHING)
 
     class Meta:
