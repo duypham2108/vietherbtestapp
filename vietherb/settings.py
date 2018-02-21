@@ -25,7 +25,7 @@ SECRET_KEY = '9#-elrv4_)!#4f9&s%pyty_0dl00i7vtdt2cq!tci_^h%=*g*1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [vietherbdjango.herokuapp.com]
+ALLOWED_HOSTS = ["vietherbdjango.herokuapp.com"]
 
 
 # Application definition
