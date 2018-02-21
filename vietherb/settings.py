@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles'
 ]
-MIDDLEWARE_CLASSES = (
+
+MIDDLEWARE_CLASSES = [
     # Simplified static file serving.
     # https://warehouse.python.org/project/whitenoise/
     'whitenoise.middleware.WhiteNoiseMiddleware'
-    )
+    ]
+
 MIDDLEWARE = [
 
     'django.middleware.security.SecurityMiddleware',
