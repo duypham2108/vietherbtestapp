@@ -1,6 +1,4 @@
  {% extends 'plant/base.html' %}
-
- {% block body %}
  {% load static %}
  <div id="preloader">
 <div id="loading">
@@ -8,6 +6,8 @@
 </div>
 </div>
  <div class="container" style="padding-top: 150px">
+ {% block body %}
+
 {% load table_tags %}
 {% render_table table %}
 
