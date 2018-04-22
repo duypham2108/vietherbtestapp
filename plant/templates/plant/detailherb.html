@@ -81,7 +81,13 @@
                           <td style="border-right: 1px solid #dddd;"><a href="{% url 'detailmetabolite' metabolite_id=pl.metabolite_id %}"><p style="color: #777; font-family: Calibri; text-align: center">{{pl.metabolite.metabolite_id}}</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href="{% url 'detailmetabolite' metabolite_id=pl.metabolite_id %}"><p style="color: #777; font-family: Calibri;">{{pl.metabolite.metabolite_name}}</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><p style="text-align:center"><img src="{{pl.metabolite.image}}" alt="{{pl.metabolite.metabolite_name}}" style="width:175px;display: inline-block;"></p></td>
-                          <td><a href="{{pl.metabolite.linkpubchem}}">Pubchem</a><br><a href="{{pl.metabolite.linkknapsack}}">Knapsack</a></td>
+                          <td>
+                            {% if pl.metabolite.linkpubchem|length > 0 %}
+                            <a href="{{pl.metabolite.linkpubchem}}">Pubchem</a><br>
+                            {% endif %}
+                            {% if pl.metabolite.linkknapsack|length > 0 %}
+                            <a href="{{pl.metabolite.linkknapsack}}">Knapsack</a></td>
+                            {% endif %}
                         </tr>
                         {% endfor %}
                       </tbody>

@@ -23,9 +23,9 @@ class LinkColumnTable(Table):
     plant_vnname = LinkColumn(field='plant_vnname',header='Vietnamese Name', links=[
         Link(viewname='detailherb', args=(A('plant_id'),), text=A('plant_vnname'))])
     familia = LinkColumn(field='familia.family',header='Familia', links=[
-        Link(viewname='detailherb', args=(A('plant_id'),), text=A('familia'))])
+        Link(viewname='detailfamilia', args=(A('familia_id'),), text=A('familia'))])
     genus = LinkColumn(field='genus.genus',header='Genus', links=[
-        Link(viewname='detailherb', args=(A('plant_id'),), text=A('genus'))])
+        Link(viewname='detailgenus', args=(A('genus_id'),), text=A('genus'))])
     logo = ImageColumn(field='plant_image', header='Plant Image', image_title='Plant')
 
     class Meta:
