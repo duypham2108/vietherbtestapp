@@ -1,7 +1,14 @@
  {% extends 'plant/base.html' %}
 
  {% block body %}
+ {% load static %}
+ <div id="preloader">
+<div id="loading">
+  <img id="loading-image" src="{% static '/images/loading.gif' %}" alt="Loading..." />
+</div>
+</div>
  <div class="container" style="padding-top: 150px">
+
 {% load table_tags %}
 {% render_table table %}
 
