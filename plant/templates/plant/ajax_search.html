@@ -1,0 +1,11 @@
+{% if plants.count > 0 %}
+
+{% for plant in plants|slice:":10" %}
+
+	<li class="live_search_doc_icon" style="text-align: left;"><a href="/herbs/{{ plant.plant_id }}/">{{ plant.plant_engname }}</a></li>
+{% endfor %}
+
+{% else %}
+<li>Nothing to show!</li>
+
+{% endif %}

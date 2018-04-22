@@ -1,0 +1,77 @@
+ {% extends 'plant/base.html' %}
+
+ {% block body %}
+
+    <!-- Page Content -->
+
+ <div class="container" style="padding-top: 150px">
+
+        <div class="row">
+          <div class="col-md-3 anchor">
+                
+            </div>
+
+            <div class="col-md-3 anchor" style="position:fixed;">
+                <p class="lead" style="color: #777; text-transform: uppercase;font-weight: bold;">Contents</p>
+                <div class="list-group" style="margin-right: 90px;">
+                    <a href="#plantimage" class="list-group-item">1. Structure</a>
+                    <a href="#information" class="list-group-item">2. Information</a>
+                    <a href="#classification" class="list-group-item">3. Related Herbs</a>
+
+                </div>
+            </div>
+
+            <div class="col-md-9 anchor" >
+                <div style="padding-left: 15px;padding-bottom: 6px;" >
+                    <a style="color: #777; font-weight: none; text-transform: uppercase;font-size: 16px;padding-top: 110px;" name="plantimage">Structure</a>
+                </div>
+                <div class="thumbnail" style="padding-left: 6px; padding-top: 6px;padding-bottom: 6px;">
+                  
+                    <img src="{{metabolite.image}}" style="width: 300px; display: block;margin: 0 auto;">
+                </div>
+                <!--  -->
+                <div style="padding-left: 15px;padding-bottom: 6px;">
+                    <a style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;padding-top: 110px;" name="information">Information</a>
+                </div>
+                <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;">
+                  <br>
+                  <p style="color: #777; font-weight: bold;">Metabolite Name </p>
+                  <p style="color: #777; font-family: Calibri;">{{metabolite.metabolite_name}}</p>
+                  <br>
+                  <p style="color: #777; font-weight: bold; ;">Formula</p>
+                  <p style="color: #777; font-family: Calibri;text-transform: capitalize">{{metabolite.formula}}</p>
+                  <br>
+                  <p style="color: #777; font-weight: bold; ;">CASID</p>
+                  <p style="color: #777; font-family: Calibri;text-transform: capitalize">{{metabolite.casid}}</p>
+                  <br>
+                  <p style="color: #777; font-weight: bold; ;">InChiKey</p>
+                  <p style="color: #777; font-family: Calibri;text-transform: capitalize">{{metabolite.inchikey}}</p>
+                  <br>
+                  <p style="color: #777; font-weight: bold; ;">SMILES</p>
+                  <p style="color: #777; font-family: Calibri;text-transform: capitalize">{{metabolite.smiles}}</p>
+                </div>
+
+                <!--  -->
+                <div style="padding-left: 15px;padding-bottom: 6px; padding-bottom: 20px;">
+                    <a style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px; padding-top: 110px;" name="classification">Related Herbs</a>
+                </div>
+                <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;">
+                  <br>
+                  <ol class="custom-counter">
+                  {% for pl in plant %}
+                  
+                    <li style="color: #777; font-family: Calibri; text-transform: capitalize;"><a href="{% url 'detailherb' plant_id=pl.plant_id %} ">{{pl.plant_engname}}</a>  </li>
+                  {% endfor %}
+                  </ol>
+                  
+                </div>
+
+                
+
+            </div>
+
+        </div>
+
+    </div>
+
+ {% endblock %}

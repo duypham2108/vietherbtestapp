@@ -1,100 +1,12 @@
-<!DOCTYPE html>
-{% load staticfiles%}
-<!--
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
-AUTHOR : Vijayan PP
-PROJECT :A-MD
-VERSION : 1.1
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
--->
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=devidev-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Vietherb - Vietnamese Herbal Medicine Database</title>
-	
-	<!-- [ FONT-AWESOME ICON ] 
-        =========================================================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'library/font-awesome-4.3.0/css/font-awesome.min.css' %}">
-
-	<!-- [ PLUGIN STYLESHEET ]
-        =========================================================================================================================-->
-	<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logoVH-7.png' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}">
-        <link rel ="stylesheet" type="text/css" href="{% static 'library/vegas/vegas.min.css' %}">
-	<!-- [ Boot STYLESHEET ]
-        =========================================================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'library/bootstrap/css/bootstrap-theme.min.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'library/bootstrap/css/bootstrap.css' %}">
-        
-        <!-- [ DEFAULT STYLESHEET ] 
-        =========================================================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/color/green.css' %}">
-        
-</head>
-<body >
-<!-- [ LOADERs ]
-================================================================================================================================-->	
-    <div class="preloader">
-    <div class="loader">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+ {% extends 'plant/base.html' %}
+ {% block body %}  
+{% load static %}
+<div id="preloader">
+<div id="loading">
+  <img id="loading-image" src="{% static '/images/loading.gif' %}" alt="Loading..." />
 </div>
-<!-- [ /PRELOADER ]
-=============================================================================================================================-->
-<!-- [WRAPPER ]
-=============================================================================================================================-->
-<div class="wrapper">
-    
- <!-- [NAV]
- ============================================================================================================================-->    
-   <!-- Navigation
-    ==========================================-->
-    <nav  class="amd-menu navbar navbar-default navbar-fixed-top theme_background_color fadeInDown">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-            <img src="{% static './images/logoVH-7.png' %}" href="index.html">
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#home" class="page-scroll">Home</a></li>
-            <li><a href="#feature" class="page-scroll">Herbs</a></li>
-            <li><a href="#howwork" class="page-scroll">Metabolites</a></li>
-            <li><a href="#whylove" class="page-scroll">Therapeutic Effects</a></li>
-            <li><a href="#stats" class="page-scroll">About us</a></li>
-            <li><a href="#screenshot" class="page-scroll">Contact</a></li>
-            <li><a href="#testimonial-s" class="page-scroll">Joint with us</a></li>
-            <li><a href="#contact" class="page-scroll" id="contacts"><i class="fa fa-send"></i></a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-
-
-   <!-- [/NAV]
- ============================================================================================================================-->    
-    
-    
-    
-    
-    
-  <!-- [MAIN GALLERY ]
+</div>
+  <!-- [MAIN Home Page ]
 =============================================================================================================================-->
   <section class="main-gallery" id="home">
     <div class="overlay">
@@ -110,23 +22,28 @@ VERSION : 1.1
                         <div class="text-center top40">
                        
                                 <!-- Search -->
-                            <div class="sub-form text-center">
-          <div class="row">
-            <div class="col-md-5 center-block col-sm-8 col-xs-11">
-              <form role="form" id="mc-form">
-                <div class="input-group">
-                  <input type="email" class="form-control fadeInDown" placeholder="Enter a search term..." required value="" name="SEARCH">
-                  <span class="input-group-btn">
-                  <button type="submit" class="btn btn-default" id="mc-subscribe">Search  <i class="fa fa-search"></i></button>
-                  </span> </div>
-              </form>
-              <p id="mc-notification"></p>
-            </div>
-          </div>
-        </div>
-                          
 
-                        </div>
+
+
+{% csrf_token %}
+<div id="custom-search-input">
+                <div class="input-group col-md-12">
+                  <form method="get">
+                    <input type="text" class="form-control input-lg" name="search" id="search" placeholder="Enter your search..." autocomplete="off"/>
+                  </form>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button" style="padding-top: 13.5px;">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+
+                </div>
+            </div>
+            <div  style="animation-delay: 2s;">
+            <ul class="manual-searchresults" id = "search-results">
+
+</ul>
+</div>
                     </div>
               
           </div>
@@ -138,122 +55,10 @@ VERSION : 1.1
   
   <!-- [/MAIN GALLERY]
 =============================================================================================================================-->
-  
+
  
- <!-- [SUBSCRIBE]
-=============================================================================================================================-->
- <section class="contactus" id="contact">
-     <div class="container">
-         <div class="row">
-                <div class="col-sm-12 text-center">
-                    <div class="testimonial-area-heading">
-                        <h2 class="grey">CONTACT US</h2>
-                    </div>
-                </div>
-            </div>
-         <div class="gap"></div>
-     <div class="row">
-                    <!-- /contact info -->
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                      <!-- contact form -->
-                      <form id="contact-form" method="POST" action="php/sendmail.php">
-                        <div class="row form-group">
-                          <div class="col-xs-6">
-                            <input type="text" name="name" placeholder="name" id="contact-name" class="form-control">
-                          </div>
-                          <div class="col-xs-6">
-                            <input type="email" name="email" placeholder="e-mail" id="contact-email" class="form-control ">
-                          </div>
-                        </div>
-                        <div class="row form-group">
-                          <div class="col-md-12 col-sm-12 col-xs-12">
-                            <textarea name="message" rows="4" placeholder="message" id="contact-message" class="form-control "></textarea>
-                          </div>
-                        </div>
-                        <button type="submit" class="btn btn-style blue">Submit</button>
-                       <span class="form-message" style="display: none;"></span>
-                      </form>
-                      <!-- /contact form -->
-                    </div>
-                  </div>
-     </div>
-				  
- </section>
+ 
  <!--  [CONTACT INFO ENDS ]-->
  <!-- [/SUBSCRIBE]
 =============================================================================================================================-->
- 
- <!-- [FOOTER]
-=============================================================================================================================-->
- <footer class="footer">
-  
-					<div class="container">
-						<div class="footer-info col-md-12 text-center">
-							<ul>
-								<li><a href="#">HCMC,VN 24218</a></li>
-								<li><a href="#">+84971124703</a></li>
-								<li><a href="#">phamduychv94@gmail.com</a></li>
-							</ul>
-						</div>
-						<div class="footer-social-icons col-md-12 text-center">
-							<ul>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-								<li><a href="#"><i class="fa fa-rss"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				  
-     
-     
- </footer>
- 
- <section class="sub-footer">
-					<div class="container">
-						<div class="copyright-text col-md-6 col-sm-6 col-xs-12">
-							<p>© 2016 Vietherb.com.vn. All Rights Reserved.</p>
-						</div>
-						<div class="designed-by col-md-6 col-sm-6 col-xs-12">
-							<p>Designed by: <a href="#">DUYPHAM2108</a></p>
-						</div>
-					</div>
-				</section>
- 
- <!-- [/FOOTER]
-=============================================================================================================================-->
- 
- 
- 
- 
- 
- 
- 
- 
- 
-</div>
- 
-
-<!-- [ /WRAPPER ]
-=============================================================================================================================-->
-
-	<!-- [ DEFAULT SCRIPT ] -->
-	<script src="{% static 'library/modernizr.custom.97074.js' %}"></script>
-	<script src="{% static 'library/jquery-1.11.3.min.js' %}"></script>
-        <script src="{% static 'library/bootstrap/js/bootstrap.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/jquery.easing.1.3.js' %}"></script>
-        <script src="{% static 'library/vegas/vegas.min.js' %}"></script>
-	<!-- [ PLUGIN SCRIPT ] -->
-        
-	<script src="{% static 'js/plugins.js' %}"></script>
-        <script src="{% static 'js/fappear.js' %}"></script>
-       <script src="{% static 'js/jquery.countTo.js' %}"></script>
-	<script src="{% static 'js/scrollreveal.js' %}"></script>
-       	 <!-- [ COMMON SCRIPT ] -->
-	<script src="{% static 'js/common.js' %}"></script>
-  
-</body>
-
-
-</html>
+ {% endblock %}

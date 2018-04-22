@@ -174,7 +174,7 @@ class Plant(models.Model):
     def __str__(self):
         return self.plant_engname
     class Meta:
-        managed = False
+#        managed = False
         db_table = 'plant'
 
 

@@ -1,0 +1,75 @@
+ {% extends 'plant/base.html' %}
+
+ {% block body %}
+
+    <!-- Page Content -->
+
+ <div class="container" style="padding-top: 150px">
+
+        <div class="row">
+          <div class="col-md-3 anchor">
+                
+            </div>
+
+            <div class="col-md-3 anchor" style="position:fixed;">
+                <p class="lead" style="color: #777; text-transform: uppercase;font-weight: bold;">Contents</p>
+                <div class="list-group" style="margin-right: 90px;">
+                    <a href="#information" class="list-group-item">1. Information</a>
+                    <a href="#genus" class="list-group-item">2. Related Familia</a>
+                    <a href="#plant" class="list-group-item">3. Related Plant</a>
+
+                </div>
+            </div>
+
+            <div class="col-md-9 anchor" >
+                
+                <!--  -->
+                <div style="padding-left: 15px;padding-bottom: 6px;">
+                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;" name="information">Information</a>
+                </div>
+                <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;">
+                  <br>
+                  <p style="color: #777; font-weight: bold;">Genus Name </p>
+                  <p style="color: #777; font-family: Calibri;">{{genus.genus}}</p>
+                </div>
+
+         <!--  -->
+
+                <div style="padding-left: 15px;padding-bottom: 6px; padding-bottom: 20px;width: 40%; float:left;display: inline;">
+                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;" name="genus">Related Familia</a>
+                </div>
+                <div style="padding-left: 15px;padding-bottom: 6px; padding-bottom: 20px;display: inline;width: 40%; float:right;display: inline;">
+                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;" name="plant">Related Plant</a>
+                </div>
+                <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;width: 40%; float:left;">
+                  <br>
+                  <ol class="custom-counter">
+                  {% for fa in familia %}
+                  
+                    <li style="color: #777; font-family: Calibri; text-transform: capitalize;"><a href="">{{fa}}</a>  </li>
+                  {% endfor %}
+                  </ol>
+                  
+                </div>
+
+                
+                <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;width: 40%; float:right;">
+                  <br>
+                  <ol class="custom-counter">
+                  {% for pl,id in plant %}
+                  
+                    <li style="color: #777; font-family: Calibri; text-transform: capitalize;"><a href=" {% url 'detailherb' plant_id=id %}">{{pl}}</a>  </li>
+                  {% endfor %}
+                  </ol>
+                  
+                </div>
+
+           </div>     
+
+
+
+        </div>
+
+    </div>
+
+ {% endblock %}

@@ -1,0 +1,127 @@
+ {% extends 'plant/base.html' %}
+
+ {% block body %}
+
+    <!-- Page Content -->
+
+ <div class="container" style="padding-top: 150px">
+
+        <div class="row">
+          <div class="col-md-3 anchor">
+                
+            </div>
+
+            <div class="col-md-3 anchor" style="position:fixed;">
+                <p class="lead" style="color: #777; text-transform: uppercase;font-weight: bold;">Contents</p>
+                <div class="list-group" style="margin-right: 90px;">
+                    <a href="#plantimage" class="list-group-item">1. Plant Image</a>
+                    <a href="#information" class="list-group-item">2. Information</a>
+                    <a href="#classification" class="list-group-item">3. Classification</a>
+                    <a href="#metabolites" class="list-group-item">4. Metabolites</a>
+                    <a href="#therapeutic" class="list-group-item">5. Therapeutic Effects</a>
+                    <a href="#distribution" class="list-group-item">6. Distribution</a>
+                </div>
+            </div>
+
+            <div class="col-md-9 anchor" >
+                <div style="padding-left: 15px;padding-bottom: 6px;" >
+                    <a class = "anchor" style="color: #777; font-weight: none; text-transform: uppercase;font-size: 16px;" name="plantimage">Plant image</a>
+                </div>
+                <div class="thumbnail" style="padding-left: 6px; padding-top: 6px;padding-bottom: 6px;">
+                  
+                    <img src="{{plant.plant_image}}" style="width: 200px; height: 300px;display: inline-block;">
+                    <img src="{{plant.plant_image_2}}" style="width: 200px; height: 300px;display: inline-block;",>
+                    <img src="{{plant.plant_image_3}}" style="width: 200px; height: 300px;display: inline-block;">
+                    <img src="{{plant.plant_image_4}}" style="width: 200px; height: 300px;display: inline-block;">
+                </div>
+                <!--  -->
+                <div style="padding-left: 15px;padding-bottom: 6px;">
+                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;" name="information">Information</a>
+                </div>
+                <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;">
+                  <br>
+                  <p style="color: #777; font-weight: bold;">English Name </p>
+                  <p style="color: #777; font-family: Calibri;">{{plant.plant_engname}}</p>
+                  <br>
+                  <p style="color: #777; font-weight: bold; ;">Vietnamese Name</p>
+                  <p style="color: #777; font-family: Calibri;text-transform: capitalize">{{plant.plant_vnname}}</p>
+                </div>
+
+                <!--  -->
+                <div style="padding-left: 15px;padding-bottom: 6px; padding-bottom: 20px;">
+                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px; " name="classification">Classification</a>
+                </div>
+                <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;">
+                  <br>
+                  <p style="color: #777; font-weight: bold;">Familia </p>
+                  <a href="{% url 'detailfamilia' familia_id=plant.familia_id %}"><p style="color: #777; font-family: Calibri;">{{plant.familia}}</p></a>
+                  <br>
+                  <p style="color: #777; font-weight: bold; ;">Genus</p>
+                   <a href="{% url 'detailgenus' genus_id=plant.genus_id %}"><p style="color: #777; font-family: Calibri;text-transform: capitalize">{{plant.genus}}</p></a>
+                </div>
+
+                <!--  -->
+                <div style="padding-left: 15px;padding-bottom: 6px; padding-bottom: 20px;">
+                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;" name="metabolites">Metabolites</a>
+                </div>
+                <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;">
+                  <br>
+                  <table class="table">
+                      <thead>
+                        <tr>
+                          <th style="text-align: center;color: #777; font-weight: bold; ">Metabolite ID</th>
+                          <th style="text-align: center;color: #777; font-weight: bold; ">Metabolite Name</th>
+                          <th style="text-align: center;color: #777; font-weight: bold;">Structure</th>
+                          <th style="text-align: center;color: #777; font-weight: bold;">References</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for pl in meta %}
+                        <tr>
+                          <td style="border-right: 1px solid #dddd;"><a href="{% url 'detailmetabolite' metabolite_id=pl.metabolite_id %}"><p style="color: #777; font-family: Calibri; text-align: center">{{pl.metabolite.metabolite_id}}</p></a></td>
+                          <td style="border-right: 1px solid #dddd;"><a href="{% url 'detailmetabolite' metabolite_id=pl.metabolite_id %}"><p style="color: #777; font-family: Calibri;">{{pl.metabolite.metabolite_name}}</p></a></td>
+                          <td style="border-right: 1px solid #dddd;"><p style="text-align:center"><img src="{{pl.metabolite.image}}" alt="{{pl.metabolite.metabolite_name}}" style="width:175px;display: inline-block;"></p></td>
+                          <td><a href="{{pl.metabolite.linkpubchem}}">Pubchem</a><br><a href="{{pl.metabolite.linkknapsack}}">Knapsack</a></td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+
+                <!--  -->
+                <div style="padding-left: 15px;padding-bottom: 6px; padding-bottom: 20px;">
+                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;" name="therapeutic">Therapeutic Effects</a>
+                </div>
+                <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;">
+                  <br>
+                  <ol class="custom-counter">
+                  {% for pl in thera %}
+                  
+                    <li style="color: #777; font-family: Calibri; text-transform: capitalize;"> {{pl.thera.thera_name}} </li>
+                  {% endfor %}
+                  </ol>
+                  
+                </div>
+
+                <!--  -->
+                <div style="padding-left: 15px;padding-bottom: 6px; padding-bottom: 20px;">
+                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px; " name="distribution">Distribution</a>
+                </div>
+                <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;">
+                  <br>
+                  <ol class="custom-counter">
+                  {% for pl in loca %}
+                  
+                    <li style="color: #777; font-family: Calibri; text-transform: capitalize;"> {{pl.distribution.location_name}} </li>
+                  {% endfor %}
+                  </ol>
+                  
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+ {% endblock %}

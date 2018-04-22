@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vietherb - Vietnamese Herbal Medicine Database</title>
+    
+    <!-- [ FONT-AWESOME ICON ] 
+        =========================================================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'library/font-awesome-4.3.0/css/font-awesome.min.css' %}">
+
+    <!-- [ PLUGIN STYLESHEET ]
+        =========================================================================================================================-->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logoVH-7.png' %}">
+ <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+     <link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}"> 
+    <link rel ="stylesheet" type="text/css" href="{% static 'css/datatables.min.css' %}"> 
+    <!-- [ Boot STYLESHEET ]
+        =========================================================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'library/bootstrap/css/bootstrap-theme.min.css' %}"> 
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- [ DEFAULT STYLESHEET ] 
+        =========================================================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/color/green.css' %}">
+
+<!--===============================================================================================-->
+
+   <script type="text/javascript" src="{% static 'library/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'library/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--    <script type="text/javascript" src="{% static 'js/jquery.easing.1.3.js' %}"></script> -->
+    <!-- [ PLUGIN SCRIPT ] -->
+        
+
+ <!--   <script type="text/javascript" src="{% static 'js/fappear.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.countTo.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/scrollreveal.js' %}"></script> -->
+         <!-- [ COMMON SCRIPT ] -->
+  <!--  <script type="text/javascript" src="{% static 'js/plugins.js' %}"></script> -->
+    
+    <script type="text/javascript" src="{% static 'library/jquery.min.js' %}"></script>
+   <!--   <script src="https://intercoolerreleases-leaddynocom.netdna-ssl.com/intercooler-1.1.1.min.js"></script>-->
+    <script type="text/javascript" src="{% static 'js/ajax.js' %}"></script>
+
+        
+</head>
+<body >
+
+<script language="javascript" type="text/javascript">
+     $(window).load(function() {
+     $('#loading').hide();
+  });
+</script>
+
+<!-- [WRAPPER ]
+=============================================================================================================================-->
+<div class="wrapper">
+    
+ <!-- [NAV]
+ ============================================================================================================================-->    
+   <!-- Navigation
+    ==========================================-->
+
+    <nav  class="amd-menu navbar navbar-default navbar-fixed-top theme_background_color fadeInDown">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a href="">
+            <img src="{% static './images/a.png' %}" href="index.html" style="width:70%; width: 70%">
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'index' %}" class="page-scroll">Home</a></li>
+            <li><a href="{% url 'herbs' %}" class="page-scroll">Herbs</a></li>
+            <li><a href="{% url 'metabolites' %}" class="page-scroll">Metabolites</a></li>
+            <li><a href="{% url 'aboutus' %}" class="page-scroll">About us</a></li>
+            <li><a href="{% url 'contact' %}" class="page-scroll">Contact</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+
+   <!-- [/NAV]
+ ============================================================================================================================-->    
+{% block body %}
+{% endblock %}
+
+
+
+
+
+ <!-- [FOOTER]
+=============================================================================================================================-->
+ <footer class="footer">
+  
+                    <div class="container">
+                        <div class="footer-info col-md-12 text-center">
+                            <ul>
+                                <li><a href="#">HCMC,VN 24218</a></li>
+                                <li><a href="#">+84971124703</a></li>
+                                <li><a href="#">phamduychv94@gmail.com</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-social-icons col-md-12 text-center">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                  
+     
+     
+ </footer>
+ 
+ <section class="sub-footer">
+                    <div class="container">
+                        <div class="copyright-text col-md-6 col-sm-6 col-xs-12">
+                            <p>© 2016 Vietherb.com.vn. All Rights Reserved.</p>
+                        </div>
+                        <div class="designed-by col-md-6 col-sm-6 col-xs-12">
+                            <p>Designed by: <a href="#">DUYPHAM2108</a></p>
+                        </div>
+                    </div>
+                </section>
+ 
+ <!-- [/FOOTER]
+=============================================================================================================================-->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+</div>
+ 
+
+<!-- [ /WRAPPER ]
+=============================================================================================================================-->
+
+    <!-- [ DEFAULT SCRIPT ] -->
+
+ 
+
+
+
+  
+</body>
+
+</html>
