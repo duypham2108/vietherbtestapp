@@ -383,7 +383,7 @@ font-weight: 900;
  
 .main-gallery
 {
-    width:1600px;
+    width:100%;
     height:800px;
     background:url("https://i.imgur.com/iJbyX3z.jpg");
     background-position:center;
