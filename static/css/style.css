@@ -1645,3 +1645,9 @@ img.center {
     margin-top: -110px;
     position: absolute;
 }
+
+.list-group {
+    padding-left: 0;
+    margin-bottom: 20px;
+    margin-left: -43px;
+}
