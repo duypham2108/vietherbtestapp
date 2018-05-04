@@ -1651,3 +1651,20 @@ img.center {
     margin-bottom: 20px;
     margin-left: -43px;
 }
+.logovh{
+    width: 70%;
+}
+@media (min-device-width:320px) and (max-device-width:768px) {
+.logovh{
+    width: 50%;
+}
+.input-group[class*=col-] {
+    float: none;
+    padding-right: 40px;
+    padding-left: 40px;
+}
+.search-show{
+    padding-left: 40px;
+    padding-right: 99px;
+}
+}
