@@ -81,7 +81,7 @@
                           <td style="border-right: 1px solid #dddd;"><a href="{% url 'detailmetabolite' metabolite_id=pl.metabolite_id %}"><p style="color: #777; font-family: Calibri; text-align: center">{{pl.metabolite.metabolite_id}}</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href="{% url 'detailmetabolite' metabolite_id=pl.metabolite_id %}"><p style="color: #777; font-family: Calibri;">{{pl.metabolite.metabolite_name}}</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><p style="text-align:center"><img src="{{pl.metabolite.image}}" alt="{{pl.metabolite.metabolite_name}}" style="width:175px;display: inline-block;"></p></td>
-                          <td>
+                          <td  style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">
                             {% if pl.metabolite.linkpubchem|length > 0 %}
                             <a href="{{pl.metabolite.linkpubchem}}">Pubchem</a><br>
                             {% endif %}
@@ -125,6 +125,9 @@
                 </div>
 
                 <!--  -->
+                <div style="padding-left: 15px;padding-bottom: 6px; padding-bottom: 20px;">
+                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;" name="metabolites">Drug you should avoid when use with this herb</a>
+                </div>
                 <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;">
                   <br>
                   <table class="table">
@@ -162,7 +165,7 @@
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">3</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">Digoxin</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">0.6347</p></a></td>
-                          <td>
+                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">
                             <a href="https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1742-1241.2012.03008.x">Link</a>
                             </td>
                             
@@ -172,7 +175,7 @@
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">4</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">Clevidipine</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">0.6290</p></a></td>
-                          <td>
+                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">
                             <a href=""></a>
                             </td>
                             
@@ -182,7 +185,7 @@
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">5</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">Gliquidone</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">0.6258</p></a></td>
-                          <td>
+                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">
                             <a href=""></a>
                             </td>
                             
@@ -192,7 +195,7 @@
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">6</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">Cilnidipine</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">0.6229</p></a></td>
-                          <td>
+                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">
                             <a href=""></a>
                             </td>
                             
@@ -202,7 +205,7 @@
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">7</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">Barnidipine</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">0.6205</p></a></td>
-                          <td>
+                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">
                             <a href=""></a>
                             </td>
                             
@@ -212,7 +215,7 @@
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">8</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">Oxprenolol</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">0.6149</p></a></td>
-                          <td>
+                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">
                             <a href=""></a>
                             </td>
                             
@@ -222,7 +225,7 @@
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">9</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">Bendrofluazide</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">0.6147</p></a></td>
-                          <td>
+                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">
                             <a href="https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1742-1241.2012.03008.x">Link</a>
                             </td>
                             
@@ -232,7 +235,7 @@
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">10</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">Encainide</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">0.6129</p></a></td>
-                          <td>
+                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">
                             <a href=""></a>
                             </td>
                             
