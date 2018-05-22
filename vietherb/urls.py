@@ -22,8 +22,6 @@ urlpatterns = [
 	url(r'^table/', include('table.urls')),
 
 	url(r'^search/$', views.search_titles),
-
-	url(r'^test/$', views.HomeView.as_view(), name='test'),
 	url(r'^api/chart/data/$', views.ChartData.as_view())
 
 ]
