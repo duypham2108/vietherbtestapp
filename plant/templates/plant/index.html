@@ -28,7 +28,7 @@
 {% csrf_token %}
 <div id="custom-search-input">
                 <div class="input-group col-md-12">
-                  <form method="get" action="{% url 'blog_search_list_view' %}">
+                  <form method="get">
                     <input type="text" class="form-control input-lg" name="search" id="search" placeholder="Enter your search..." autocomplete="off"/>
                   </form>
                     <span class="input-group-btn">
