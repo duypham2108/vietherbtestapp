@@ -10,8 +10,7 @@ from django.http.response import HttpResponse
 
 from .tables import LinkColumnTable, MetaboliteTable
 
-from random import randint
-from django.views.generic import TemplateView, View
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
