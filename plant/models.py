@@ -169,8 +169,12 @@ class Plant(models.Model):
     plant_image_2 = models.CharField(max_length=500, blank=True, null=True)
     plant_image_3 = models.CharField(max_length=500, blank=True, null=True)
     plant_image_4 = models.CharField(max_length=500, blank=True, null=True)
+    log_box_plot = models.FloatField(blank=True, null=False)
+    log_box_plot2 = models.IntegerField(blank=True, null=False)
     familia = models.ForeignKey(Familia, models.DO_NOTHING, db_column='Familia_id', blank=True, null=True)  # Field name made lowercase.
     genus = models.ForeignKey(Genus, models.DO_NOTHING, db_column='Genus_id', blank=True, null=True)  # Field name made lowercase.
+    
+   
     def __str__(self):
         return self.plant_engname
     class Meta:
@@ -216,3 +220,24 @@ class TherapeuticEffects(models.Model):
     class Meta:
         managed = False
         db_table = 'therapeutic_effects'
+
+class Morphology(models.Model):
+    morpho_id = models.IntegerField(db_column='morpho_id',primary_key=True)
+    lv1 = models.CharField(db_column='lv1', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    lv2 = models.CharField(db_column='lv2', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    lv3 = models.CharField(db_column='lv3', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    verb = models.CharField(db_column='verb', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    def __str__(self):
+        return self.lv1
+    class Meta:
+        managed = False
+        db_table = 'morphology'
+
+class PlantHasMorphology(models.Model):
+    plant = models.ForeignKey(Plant, models.DO_NOTHING, db_column='Plant_id', primary_key=True)  # Field name made lowercase.
+    morpho = models.ForeignKey('Morphology', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'plant_has_morpho'
+        unique_together = (('plant', 'morpho'),)
