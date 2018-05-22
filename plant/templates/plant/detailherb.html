@@ -13,13 +13,14 @@
 
             <div class="col-md-3 anchor" style="position:fixed;">
                 <p class="lead" style="color: #777; text-transform: uppercase;font-weight: bold;">Contents</p>
-                <div class="list-group" style="margin-right: 165px;">
+                <div class="list-group" style="margin-right: 90px;">
                     <a href="#plantimage" class="list-group-item">1. Plant Image</a>
                     <a href="#information" class="list-group-item">2. Information</a>
-                    <a href="#classification" class="list-group-item">3. Classification</a>
-                    <a href="#metabolites" class="list-group-item">4. Metabolites</a>
-                    <a href="#therapeutic" class="list-group-item">5. Therapeutic Effects</a>
-                    <a href="#distribution" class="list-group-item">6. Distribution</a>
+                    <a href="#discovered" class="list-group-item">3. Discovered Statement</a>
+                    <a href="#classification" class="list-group-item">4. Classification</a>
+                    <a href="#metabolites" class="list-group-item">5. Metabolites</a>
+                    <a href="#therapeutic" class="list-group-item">6. Therapeutic Effects</a>
+                    <a href="#distribution" class="list-group-item">7. Distribution</a>
                 </div>
             </div>
 
@@ -46,6 +47,397 @@
                   <p style="color: #777; font-weight: bold; ;">Vietnamese Name</p>
                   <p style="color: #777; font-family: Calibri;text-transform: capitalize">{{plant.plant_vnname}}</p>
                 </div>
+
+                <!--  -->
+                <div style="padding-left: 15px;padding-bottom: 6px;">
+                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;" name="discovered">Discovered Statement</a>
+                </div>
+                <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;width: 100%;height: 400px;">
+                  <div id="container" style="height: 350px; margin: auto; width: 50%; float: left; margin-top: 30px">
+</div>
+<div id="container2" style="height: 350px; margin: auto; width: 50%; float: right; margin-top: 30px">
+  </div>
+  </div>
+
+  <!--  -->
+                <div style="padding-left: 15px;padding-bottom: 6px;">
+                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;" name="discovered">Morphology</a>
+                </div>
+                <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;width: 100%;height: 400px;">
+<div id="container3" style="height: 350px; margin: auto; width: 100%; ; margin-top: 30px">
+  </div>
+  </div>
+   <!--  -->
+                <div style="padding-left: 15px;padding-bottom: 6px;">
+                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;" name="discovered">Distribution</a>
+                </div>
+                <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;width: 100%;height: 600px;">
+<div id="worldmap" style="height: 500px; margin: auto; width: 100%; ; margin-top: 30px">
+  </div>
+  </div>
+  
+  <script>
+var endpoint = '/api/chart/data/'
+
+var defaultData = [];
+
+$.ajax({
+    method: "GET",
+    url: endpoint,
+    success: function(data){
+        defaultData = data.defaultData
+        defaultData2 = data.defaultData2
+        console.log(defaultData)
+        console.log(defaultData2)
+        boxplot(defaultData)
+        boxplot2(defaultData2)
+        tree(defaultData2)
+        WorldMap()
+    },
+    error: function(error_data){
+        console.log("error")
+        console.log(error_data)
+    }
+})
+
+function boxplot(defaultData){
+  //some code
+  var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+var data = echarts.dataTool.prepareBoxplotData([
+    defaultData
+]);
+
+option = {
+
+    title: [
+        {
+            text: 'Metabolites Discovered Statement',
+            left: 'center',
+        },
+    ],
+    tooltip: {
+        trigger: 'item',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    grid: {
+        left: '20%',
+        right: '20%',
+        bottom: '15%'
+    },
+    xAxis: {
+        type: 'category',
+        data: data.axisData,
+        boundaryGap: true,
+        nameGap: 30,
+        splitArea: {
+            show: false
+        },
+        axisLabel: {
+            formatter: ''
+        },
+        splitLine: {
+            show: false
+        }
+    },
+    yAxis: {
+         min: 0,
+         max: 8,
+        type: 'value',
+        name: 'log(no. metabolites)',
+        splitArea: {
+            show: true
+        }
+    },
+    series: [
+        {
+            name: '{{ plant.plant_engname}}',
+            type: 'boxplot',
+            data: data.boxData,
+            color: '#87cefa',
+            markLine: {
+                data: [
+                    {type: 'average',yAxis: {{ plant.log_box_plot }}  }
+                ]
+            },
+            tooltip: {
+                formatter: function (param) {
+                    return [
+                        'Value' + ': ',
+                        'upper: ' + param.data[5],
+                        'Q3: ' + param.data[4],
+                        'median: ' + param.data[3],
+                        'Q1: ' + param.data[2],
+                        'lower: ' + param.data[1]
+                    ].join('<br/>')
+                }
+            }
+        },
+        {
+            name: 'outlier',
+            type: 'scatter',
+            data: data.outliers
+        }
+
+
+    ]
+}
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+}
+
+
+
+
+function boxplot2(defaultData2){
+  //some code
+  var dom = document.getElementById("container2");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+var data = echarts.dataTool.prepareBoxplotData([
+    defaultData2
+]);
+
+option = {
+    color: ['green'],
+    title: [
+        {
+            text: 'Therapeutic Effects Discovered Statement',
+            left: 'center',
+        },
+    ],
+    tooltip: {
+        trigger: 'item',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    grid: {
+        left: '20%',
+        right: '20%',
+        bottom: '15%'
+    },
+    xAxis: {
+        type: 'category',
+        data: data.axisData,
+        boundaryGap: true,
+        nameGap: 30,
+        splitArea: {
+            show: false
+        },
+        axisLabel: {
+            formatter: ''
+        },
+        splitLine: {
+            show: false
+        }
+    },
+    yAxis: {
+         min: 0,
+         max: 25,
+        type: 'value',
+        name: 'no. thera',
+        splitArea: {
+            show: true
+        }
+    },
+    series: [
+        {
+            name: '{{ plant.plant_engname}}',
+            type: 'boxplot',
+            data: data.boxData,
+            markLine: {
+                data: [
+                    {type: 'average',yAxis: {{ plant.log_box_plot2 }}  }
+                ]
+            },
+            tooltip: {
+                formatter: function (param) {
+                    return [
+                        'Value' + ': ',
+                        'upper: ' + param.data[5],
+                        'Q3: ' + param.data[4],
+                        'median: ' + param.data[3],
+                        'Q1: ' + param.data[2],
+                        'lower: ' + param.data[1]
+                    ].join('<br/>')
+                }
+            }
+        },
+        {
+            name: 'outlier',
+            type: 'scatter',
+            data: data.outliers
+        }
+
+
+    ]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+}
+
+function tree(defaultData){
+var dom = document.getElementById("container3");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+myChart.showLoading();
+
+
+var data2 = {
+    "name": "Morphology",
+    "children": [
+      {% for key, value in morpho.items %}
+        {
+          "name": "{{ key }}",
+          "children": [
+            {% for key2, value2 in value.items %}
+           {
+            "name": "{{ key2 }}",
+
+            "children": [
+            {% for key3, value3 in value2.items %}
+                {"name": "{{ key3 }}", "value": '{{value3}}'},
+              {% endfor %}
+       
+            
+                        ]
+              },
+              {% endfor %}
+                      ]
+        },
+                 
+    {% endfor %}
+    ]
+};
+
+myChart.hideLoading();
+
+myChart.setOption(option = {
+    tooltip: {
+        trigger: 'item',
+        triggerOn: 'mousemove'
+    },
+    legend: {
+        top: '2%',
+        left: '3%',
+        orient: 'vertical',
+        data: [
+        {
+            name: '{{ plant.plant_engname}}',
+            icon: 'rectangle'
+        }],
+        borderColor: '#c23531'
+    },
+    series:[
+        {
+            type: 'tree',
+            name: '{{ plant.plant_engname}}',
+            data: [data2],
+
+
+
+
+
+            right: '30%',
+
+            symbolSize: 7,
+
+            label: {
+                normal: {
+                    position: 'left',
+                    verticalAlign: 'middle',
+                    align: 'right'
+                }
+            },
+
+            leaves: {
+                label: {
+                    normal: {
+                        position: 'right',
+                        verticalAlign: 'middle',
+                        align: 'left'
+                    }
+                }
+            },
+
+            expandAndCollapse: true,
+
+            animationDuration: 550,
+            animationDurationUpdate: 750
+        }
+    ]
+});
+
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+}
+
+function WorldMap(){
+  var dom = document.getElementById("worldmap");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    title: {
+        text: 'World Map: {{ plant.plant_engname }} Distribution',
+
+        left: 'center',
+        top: 'top'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: function (params) {
+            var value = (params.value + '').split('.');
+            value = value[0].replace(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g, '$1,')
+                    + '.' + value[1];
+            return params.seriesName + '<br/>' + params.name + ' : ' + value;
+        }
+    },
+    visualMap: {
+        realtime: false,
+        calculable: false,
+        inRange: {
+            value: [0,1],
+            color: ['rgba(90,167,115,1)','red', 'orangered']
+        },
+        show: false
+    },
+    series: [
+        {
+            name: '{{ plant.plant_engname}}',
+            type: 'map',
+            mapType: 'world',
+            roam: true,
+            itemStyle:{
+                emphasis:{label:{show:true}}
+            },
+            data:[
+            {% for pl in loca %}
+                {name: '{{pl.distribution.location_name}}', value: 1},
+            {% endfor %}
+            {name: 'Vietnam', value: 1},
+            ]
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+}
+</script>
+                
 
                 <!--  -->
                 <div style="padding-left: 15px;padding-bottom: 6px; padding-bottom: 20px;">
@@ -81,13 +473,7 @@
                           <td style="border-right: 1px solid #dddd;"><a href="{% url 'detailmetabolite' metabolite_id=pl.metabolite_id %}"><p style="color: #777; font-family: Calibri; text-align: center">{{pl.metabolite.metabolite_id}}</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><a href="{% url 'detailmetabolite' metabolite_id=pl.metabolite_id %}"><p style="color: #777; font-family: Calibri;">{{pl.metabolite.metabolite_name}}</p></a></td>
                           <td style="border-right: 1px solid #dddd;"><p style="text-align:center"><img src="{{pl.metabolite.image}}" alt="{{pl.metabolite.metabolite_name}}" style="width:175px;display: inline-block;"></p></td>
-                          <td  style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri;">
-                            {% if pl.metabolite.linkpubchem|length > 0 %}
-                            <a href="{{pl.metabolite.linkpubchem}}">Pubchem</a><br>
-                            {% endif %}
-                            {% if pl.metabolite.linkknapsack|length > 0 %}
-                            <a href="{{pl.metabolite.linkknapsack}}">Knapsack</a></td>
-                            {% endif %}
+                          <td><a href="{{pl.metabolite.linkpubchem}}">Pubchem</a><br><a href="{{pl.metabolite.linkknapsack}}">Knapsack</a></td>
                         </tr>
                         {% endfor %}
                       </tbody>
@@ -122,127 +508,6 @@
                   {% endfor %}
                   </ol>
                   
-                </div>
-
-                <!--  -->
-                <div style="padding-left: 15px;padding-bottom: 6px; padding-bottom: 20px;">
-                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;" name="metabolites">Avoid Concomitant Use - Potential</a>
-                </div>
-                <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;">
-                  <br>
-                  <table class="table">
-                      <thead>
-                        <tr>
-                          <th style="text-align: center;color: #777; font-weight: bold; ">Top</th>
-                          <th style="text-align: center;color: #777; font-weight: bold; ">Drug name</th>
-                          <th style="text-align: center;color: #777; font-weight: bold;">Score</th>
-                          <th style="text-align: center;color: #777; font-weight: bold;">References</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <!-- Row -->
-                        <tr>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">1</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">Disopyramide</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">0.6379</p></a></td>
-                          <td>
-                            <a href=""></a>
-                            </td>
-                            
-                        </tr>
-                        <!-- Row -->
-                        <tr>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">2</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">Deslanoside</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">0.6354</p></a></td>
-                          <td>
-                            <a href=""></a>
-                            </td>
-                            
-                        </tr>
-                        <!-- Row -->
-                        <tr style="background-color: lightgoldenrodyellow;">
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">3</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">Digoxin</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">0.6347</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">
-                            <a href="https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1742-1241.2012.03008.x">Link</a>
-                            </td>
-                            
-                        </tr>
-                        <!-- Row -->
-                        <tr>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">4</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">Clevidipine</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">0.6290</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">
-                            <a href=""></a>
-                            </td>
-                            
-                        </tr>
-                        <!-- Row -->
-                        <tr>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">5</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">Gliquidone</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">0.6258</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">
-                            <a href=""></a>
-                            </td>
-                            
-                        </tr>
-                        <!-- Row -->
-                        <tr>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">6</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">Cilnidipine</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">0.6229</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">
-                            <a href=""></a>
-                            </td>
-                            
-                        </tr>
-                        <!-- Row -->
-                        <tr>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">7</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">Barnidipine</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">0.6205</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">
-                            <a href=""></a>
-                            </td>
-                            
-                        </tr>
-                        <!-- Row -->
-                        <tr>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center">8</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">Oxprenolol</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">0.6149</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">
-                            <a href=""></a>
-                            </td>
-                            
-                        </tr>
-                        <!-- Row -->
-                        <tr style="background-color: lightgoldenrodyellow;">
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">9</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">Bendrofluazide</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">0.6147</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">
-                            <a href="https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1742-1241.2012.03008.x">Link</a>
-                            </td>
-                            
-                        </tr>
-                        <!-- Row -->
-                        <tr>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">10</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">Encainide</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">0.6129</p></a></td>
-                          <td style="border-right: 1px solid #dddd;"><a href=""><p style="color: #777; font-family: Calibri; text-align: center;">
-                            <a href=""></a>
-                            </td>
-                            
-                        </tr>
-                        
-                      </tbody>
-                    </table>
                 </div>
 
             </div>
