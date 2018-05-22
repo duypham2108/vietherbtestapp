@@ -37,8 +37,19 @@ def detailherb(request,plant_id):
 	meta = plant.planthasmetabolite_set.all().distinct()
 	thera = plant.planthastherapeuticeffects_set.all().distinct()
 	loca = plant.planthasdistribution_set.all().distinct()
+	morpho = plant.planthasmorphology_set.all().distinct()
+	from collections import defaultdict
+	def tree(): return defaultdict(tree)
+	mor_dict = tree()
+	for mor in morpho:
+		mor_dict[mor.morpho.lv1][mor.morpho.lv2][mor.morpho.lv3] = mor.morpho.verb
+	def default_to_regular(d):
+	    if isinstance(d, defaultdict):
+	        d = {k: default_to_regular(v) for k, v in d.items()}
+	    return d
 
-	return render(request, 'plant/detailherb.html', {'plant':plant,'meta':meta,'thera':thera,'loca':loca})
+
+	return render(request, 'plant/detailherb.html', {'plant':plant,'meta':meta,'thera':thera,'loca':loca, 'morpho':default_to_regular(mor_dict)})
 
 def detailmetabolite(request,metabolite_id):
 	try:
