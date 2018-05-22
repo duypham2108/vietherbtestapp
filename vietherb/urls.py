@@ -23,7 +23,7 @@ urlpatterns = [
 
 	url(r'^search/$', views.search_titles),
 
-	url(r'^api/chart/data/$', views.contact, name = 'contact'),
+	url(r'^api/chart/data/$', views.ChartData.as_view()),
 
 ]
 
