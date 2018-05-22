@@ -10,10 +10,8 @@ from django.http.response import HttpResponse
 
 from .tables import LinkColumnTable, MetaboliteTable
 
-
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
 
 def index(request):
 	return render(request, 'plant/index.html')
@@ -119,6 +117,7 @@ def search_titles(request):
 
 	
 	return render(request,'plant/ajax_search.html', {'plants': plants})
+
 
 class ChartData(APIView):
 	"""

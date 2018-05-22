@@ -22,7 +22,8 @@ urlpatterns = [
 	url(r'^table/', include('table.urls')),
 
 	url(r'^search/$', views.search_titles),
-	url(r'^api/chart/data/$', views.ChartData.as_view())
+
+	url(r'^api/chart/data/$', views.contact, name = 'contact'),
 
 ]
 
