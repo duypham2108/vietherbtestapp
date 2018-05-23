@@ -1675,4 +1675,7 @@ img.center {
     width: 240px;
     display: none;
 }
+.lead{
+    display: none;
+}
 }
