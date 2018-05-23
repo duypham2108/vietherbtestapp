@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.forms.fields import FloatField
 
 
 class AuthGroup(models.Model):
@@ -169,8 +170,8 @@ class Plant(models.Model):
     plant_image_2 = models.CharField(max_length=500, blank=True, null=True)
     plant_image_3 = models.CharField(max_length=500, blank=True, null=True)
     plant_image_4 = models.CharField(max_length=500, blank=True, null=True)
-    log_box_plot = models.FloatField(blank=True, null=False)
-    log_box_plot2 = models.IntegerField(blank=True, null=False)
+    log_box_plot = models.DecimalField(max_digits=10, decimal_places=2, default="",null=True)
+    log_box_plot2 = models.IntegerField(blank=True, null=True)
     familia = models.ForeignKey(Familia, models.DO_NOTHING, db_column='Familia_id', blank=True, null=True)  # Field name made lowercase.
     genus = models.ForeignKey(Genus, models.DO_NOTHING, db_column='Genus_id', blank=True, null=True)  # Field name made lowercase.
     
