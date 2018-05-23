@@ -13,14 +13,16 @@
 
             <div class="col-md-3 anchor" style="position:fixed;">
                 <p class="lead" style="color: #777; text-transform: uppercase;font-weight: bold;">Contents</p>
-                <div class="list-group" style="margin-right: 90px;">
+                <div class="list-group">
                     <a href="#plantimage" class="list-group-item">1. Plant Image</a>
                     <a href="#information" class="list-group-item">2. Information</a>
                     <a href="#discovered" class="list-group-item">3. Discovered Statement</a>
-                    <a href="#classification" class="list-group-item">4. Classification</a>
-                    <a href="#metabolites" class="list-group-item">5. Metabolites</a>
-                    <a href="#therapeutic" class="list-group-item">6. Therapeutic Effects</a>
-                    <a href="#distribution" class="list-group-item">7. Distribution</a>
+                    <a href="#morphology" class="list-group-item">4. Morphology</a>
+                    <a href="#distribution" class="list-group-item">5. Distribution</a>
+                    <a href="#classification" class="list-group-item">6. Classification</a>
+                    <a href="#metabolites" class="list-group-item">7. Metabolites</a>
+                    <a href="#therapeutic" class="list-group-item">8. Therapeutic Effects</a>
+                    
                 </div>
             </div>
 
@@ -61,7 +63,7 @@
 
   <!--  -->
                 <div style="padding-left: 15px;padding-bottom: 6px;">
-                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;" name="discovered">Morphology</a>
+                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;" name="morphology">Morphology</a>
                 </div>
                 <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;width: 100%;height: 400px;">
 <div id="container3" style="height: 350px; margin: auto; width: 100%; ; margin-top: 30px">
@@ -69,7 +71,7 @@
   </div>
    <!--  -->
                 <div style="padding-left: 15px;padding-bottom: 6px;">
-                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;" name="discovered">Distribution</a>
+                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px;" name="distribution">Distribution</a>
                 </div>
                 <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;width: 100%;height: 600px;">
 <div id="worldmap" style="height: 500px; margin: auto; width: 100%; ; margin-top: 30px">
@@ -495,20 +497,7 @@ if (option && typeof option === "object") {
                   
                 </div>
 
-                <!--  -->
-                <div style="padding-left: 15px;padding-bottom: 6px; padding-bottom: 20px;">
-                    <a class = "anchor" style="color: #777; font-weight: none;text-transform: uppercase;font-size: 16px; " name="distribution">Distribution</a>
-                </div>
-                <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;">
-                  <br>
-                  <ol class="custom-counter">
-                  {% for pl in loca %}
-                  
-                    <li style="color: #777; font-family: Calibri; text-transform: capitalize;"> {{pl.distribution.location_name}} </li>
-                  {% endfor %}
-                  </ol>
-                  
-                </div>
+               
 
             </div>
 

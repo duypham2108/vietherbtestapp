@@ -1647,9 +1647,10 @@ img.center {
 }
 
 .list-group {
-    padding-left: 0;
+    padding-left: 1px;
     margin-bottom: 20px;
-    margin-left: -43px;
+    margin-left: -36px;
+    width: 240px;
 }
 .logovh{
     width: 70%;
