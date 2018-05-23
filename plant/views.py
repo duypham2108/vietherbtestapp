@@ -23,12 +23,12 @@ def aboutus(request):
 	return render(request, 'plant/aboutus.html')
 
 def herbs(request):
-    table_herbs = LinkColumnTable()
-    return render(request, "plant/herbs.html", {'table': table_herbs})
+	table_herbs = LinkColumnTable()
+	return render(request, "plant/herbs.html", {'table': table_herbs})
 
 def metabolites(request):
-    table_metabolites = MetaboliteTable()
-    return render(request, "plant/metabolites.html", {'table': table_metabolites}) 
+	table_metabolites = MetaboliteTable()
+	return render(request, "plant/metabolites.html", {'table': table_metabolites}) 
 
 def detailherb(request,plant_id):
 	try:

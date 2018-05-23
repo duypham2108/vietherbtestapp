@@ -446,7 +446,7 @@ if (option && typeof option === "object") {
                 <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;">
                   <br>
                   <p style="color: #777; font-weight: bold;">Familia </p>
-                  <a href="{% url 'detailfamilia' familia_id=plant.familia_id %}"><p style="color: #777; font-family: Calibri;">{{plant.log_box_plot}}</p></a>
+                  <a href="{% url 'detailfamilia' familia_id=plant.familia_id %}"><p style="color: #777; font-family: Calibri;">{{plant.familia}}</p></a>
                   <br>
                   <p style="color: #777; font-weight: bold; ;">Genus</p>
                    <a href="{% url 'detailgenus' genus_id=plant.genus_id %}"><p style="color: #777; font-family: Calibri;text-transform: capitalize">{{plant.genus}}</p></a>

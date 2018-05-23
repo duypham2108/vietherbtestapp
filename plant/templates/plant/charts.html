@@ -1,0 +1,117 @@
+ {% extends 'plant/detailherb.html' %}
+{% block body %} 
+
+ <div id="class" class="container" style="padding-top: 250px">
+ <script>
+var endpoint = '/api/chart/data/'
+
+var defaultData = [];
+
+$.ajax({
+    method: "GET",
+    url: endpoint,
+    success: function(data){
+        defaultData = data.defaultData
+        console.log(defaultData)
+        boxplot(defaultData)
+    },
+    error: function(error_data){
+        console.log("error")
+        console.log(error_data)
+    }
+})
+
+function boxplot(defaultData){
+  //some code
+  var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+var data = echarts.dataTool.prepareBoxplotData([
+    defaultData
+]);
+
+option = {
+
+    title: [
+        {
+            text: 'Metabolites Discovered Statement',
+            left: 'center',
+        },
+    ],
+    tooltip: {
+        trigger: 'item',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    grid: {
+        left: '20%',
+        right: '20%',
+        bottom: '15%'
+    },
+    xAxis: {
+        type: 'category',
+        data: data.axisData,
+        boundaryGap: true,
+        nameGap: 30,
+        splitArea: {
+            show: false
+        },
+        axisLabel: {
+            formatter: ''
+        },
+        splitLine: {
+            show: false
+        }
+    },
+    yAxis: {
+         min: 0,
+         max: 8,
+        type: 'value',
+        name: 'log(no. metabolites)',
+        splitArea: {
+            show: true
+        }
+    },
+    series: [
+        {
+            name: '{{ plant.plant_engname}}',
+            type: 'boxplot',
+            data: data.boxData,
+            color: '#87cefa',
+            markLine: {
+                data: [
+                    {type: 'average',yAxis: 1 }
+                ]
+            },
+            tooltip: {
+                formatter: function (param) {
+                    return [
+                        'Value' + ': ',
+                        'upper: ' + param.data[5],
+                        'Q3: ' + param.data[4],
+                        'median: ' + param.data[3],
+                        'Q1: ' + param.data[2],
+                        'lower: ' + param.data[1]
+                    ].join('<br/>')
+                }
+            }
+        },
+        {
+            name: 'outlier',
+            type: 'scatter',
+            data: data.outliers
+        }
+
+
+    ]
+}
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+}
+</script>
+</div>
+
+  {% endblock %}
