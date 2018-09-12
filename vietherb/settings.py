@@ -26,7 +26,7 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 SECRET_KEY = '9#-elrv4_)!#4f9&s%pyty_0dl00i7vtdt2cq!tci_^h%=*g*1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-ALLOWED_HOSTS = ['vietherb.com.vn']
+ALLOWED_HOSTS = ['vietherb.com.vn', '18.222.98.255']
 DEBUG = True
 TEMPLATE_DEBUG = False
 # Application definition
