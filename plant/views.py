@@ -22,9 +22,9 @@ def contact(request):
 def aboutus(request):
 	return render(request, 'plant/aboutus.html')
 
-def herbs(request):
+def herbs(request, query=''):
 	table_herbs = LinkColumnTable()
-	return render(request, "plant/herbs.html", {'table': table_herbs})
+	return render(request, "plant/herbs.html", {'table': table_herbs, 'query':query})
 
 def metabolites(request):
 	table_metabolites = MetaboliteTable()

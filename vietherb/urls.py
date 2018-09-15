@@ -9,8 +9,8 @@ urlpatterns = [
 	url(r'^$', views.index, name = 'index'),
 	url(r'^contact/$', views.contact, name = 'contact'),
 	url(r'^aboutus/$', views.aboutus, name = 'aboutus'),
-
-	url(r'^herbs/$', views.herbs, name = 'herbs'),
+	url(r'^herbs$', views.herbs, name = 'herbs'),
+	url(r'^herbs/search/(?P<query>[a-zA-Z]+)/$', views.herbs, name = 'herbs'),
 	url(r'^metabolites/$', views.metabolites, name = 'metabolites'),
 
 	#/herbs/123/

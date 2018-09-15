@@ -1,7 +1,10 @@
  {% extends 'plant/base.html' %}
 
  {% block body %}
+
+
  <div class="container" style="padding-top: 150px">
+
 {% load table_tags %}
 {% render_table table %}
 
@@ -12,3 +15,13 @@
  {% endblock %}
 
 
+{% block query %}
+
+<script>
+
+    $('input[type=search]').val('{{ query }}');
+
+	
+</script>
+
+{% endblock %}
