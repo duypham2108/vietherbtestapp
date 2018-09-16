@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 from .models import Plant, TherapeuticEffects, Distribution, Metabolite, Familia, Genus
 from django.template.response import TemplateResponse
 
+
 import string
 from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
@@ -145,3 +146,12 @@ class ChartData(APIView):
 		}
 	   
 		return Response(data)
+
+
+def error_404(request):
+        data = {}
+        return render(request,'plant/error_404.html', data)
+
+def error_500(request):
+        data = {}
+        return render(request,'plant/error_500.html', data)

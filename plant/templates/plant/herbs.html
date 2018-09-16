@@ -18,8 +18,10 @@
 {% block query %}
 
 <script>
-
-    $('input[type=search]').val('{{ query }}');
+$(".search").live(function(){
+        $('input[type=search]').val('{{ query }}');
+});
+    
 
 	
 </script>

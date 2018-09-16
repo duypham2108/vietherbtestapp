@@ -2,6 +2,7 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 from plant import views
+from django.conf.urls import handler404, handler500
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,3 +28,5 @@ urlpatterns = [
 
 ]
 
+handler404 = views.error_404
+handler500 = views.error_500
