@@ -44,9 +44,9 @@
                 <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;width: 40%; float:left;">
                   <br>
                   <ol class="custom-counter">
-                  {% for ge in genus %}
+                  {% for ge,id in genus %}
                   
-                    <li style="color: #777; font-family: Calibri; text-transform: capitalize;"><a href="">{{ge}}</a>  </li>
+                    <li style="color: #777; font-family: Calibri; text-transform: capitalize;"><a href=" {% url 'detailgenus' id=id %}">{{ge}}</a>  </li>
                   {% endfor %}
                   </ol>
                   

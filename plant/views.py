@@ -80,7 +80,7 @@ def detailfamilia(request,familia_id):
 
 	genus =[]
 	for ge in setplant:
-		genus.append(Plant.objects.get(pk=ge[0]).genus)
+		genus.append((Plant.objects.get(pk=ge[0]).genus,Plant.objects.get(pk=ge[0]).genus_id))
 	genus = set(genus)
 
 	return render(request, 'plant/detailfamilia.html', {'familia':familia, 'plant':plant, 'genus':genus})
@@ -99,7 +99,7 @@ def detailgenus(request,genus_id):
 
 	familia =[]
 	for fa in setplant:
-		familia.append(Plant.objects.get(pk=fa[0]).familia)
+		familia.append((Plant.objects.get(pk=fa[0]).familia,Plant.objects.get(pk=fa[0]).familia_id))
 	familia = set(familia)
 
 	return render(request, 'plant/detailgenus.html', {'genus':genus, 'plant':plant, 'familia':familia})
@@ -154,4 +154,4 @@ def error_404(request):
 
 def error_500(request):
         data = {}
-        return render(request,'plant/error_500.html', data)
+        return render(request,'myapp/error_500.html', data)

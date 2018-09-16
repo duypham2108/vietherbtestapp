@@ -46,7 +46,7 @@
                   <ol class="custom-counter">
                   {% for fa,id in familia %}
                   
-                    <li style="color: #777; font-family: Calibri; text-transform: capitalize;"><a href=" {% url 'detailfamilia' familia_id=id %}">{{fa}}</a>  </li>
+                    <li style="color: #777; font-family: Calibri; text-transform: capitalize;"><a href=" {% url 'detailfamilia' id=id %}">{{fa}}</a>  </li>
                   {% endfor %}
                   </ol>
                   
