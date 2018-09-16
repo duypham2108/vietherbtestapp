@@ -44,9 +44,9 @@
                 <div class="thumbnail" style="padding-left: 15px; padding-bottom: 20px;width: 40%; float:left;">
                   <br>
                   <ol class="custom-counter">
-                  {% for fa in familia %}
+                  {% for fa,id in familia %}
                   
-                    <li style="color: #777; font-family: Calibri; text-transform: capitalize;"><a href="">{{fa}}</a>  </li>
+                    <li style="color: #777; font-family: Calibri; text-transform: capitalize;"><a href=" {% url 'detailfamilia' familia_id=id %}">{{fa}}</a>  </li>
                   {% endfor %}
                   </ol>
                   
