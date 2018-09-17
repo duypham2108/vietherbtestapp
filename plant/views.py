@@ -17,6 +17,9 @@ from rest_framework.response import Response
 def index(request):
 	return render(request, 'plant/index.html')
 
+def ontology(request):
+    return render(request, 'plant/ontology.html')
+
 def contact(request):
 	return render(request, 'plant/contact.html')
 
