@@ -27,7 +27,7 @@ SECRET_KEY = '9#-elrv4_)!#4f9&s%pyty_0dl00i7vtdt2cq!tci_^h%=*g*1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 ALLOWED_HOSTS = ['vietherb.com.vn', '18.222.98.255', '*']
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = False
 # Application definition
 
@@ -107,7 +107,7 @@ DATABASES = {
         'NAME': 'vietherb_django',
         'USER': 'duypt',
        'PASSWORD': '0914040271qq',
-        'HOST': '18.222.98.255',   # Or an IP Address that your DB is hosted on
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 
