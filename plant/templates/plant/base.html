@@ -63,6 +63,9 @@
   });
 </script>
 
+
+
+
 <!-- [WRAPPER ]
 =============================================================================================================================-->
 <div class="wrapper">
@@ -171,6 +174,23 @@
 
   
 </body>
+
 {% block query %}
         {% endblock %}
+
+<!-- <script type="text/javascript">
+  var e = document.getElementById("sellan");
+  var language = e.value;
+  if (language == "EN") {
+      document.getElementByClass('form-control').id = 'search'
+  } else {
+      document.getElementByClass('form-control').id = 'search2'
+  }
+</script> -->
+<script type="text/javascript">
+  $('#sellan').change(function() {
+    $('#search').val(''),
+    $('#search-results').css('display', 'none');
+  }); 
+</script>
 </html>

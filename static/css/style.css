@@ -191,11 +191,11 @@ h1, h2, h3, h4, h5, h6,
 
 /*  BUTTON
 ------------------------------*/
-.btn{
-    padding: 12px 20px;
+.btn {
+    padding: 10px 14px;
     margin-bottom: 0px;
-    font-size: 14px;
-    font-weight: 900;
+    font-size: 17px;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
     border-radius: 0;

@@ -13,6 +13,8 @@ urlpatterns = [
 	url(r'^ontology/$', views.ontology, name = 'ontology'),
 	url(r'^herbs$', views.herbs, name = 'herbs'),
 	url(r'^herbs/search/(?P<query>[a-zA-Z]+)/$', views.herbs, name = 'herbs'),
+	#url(r'^herbs/search2/(?P<query>[a-zA-Z]+)/$', views.herbs, name = 'herbs'),
+
 	url(r'^metabolites/$', views.metabolites, name = 'metabolites'),
 
 	#/herbs/123/
@@ -24,6 +26,8 @@ urlpatterns = [
 	url(r'^table/', include('table.urls')),
 
 	url(r'^search/$', views.search_titles),
+	#url(r'^search2/$', views.search_titles_vn),
+
 
 	url(r'^api/chart/data/$', views.ChartData.as_view()),
 

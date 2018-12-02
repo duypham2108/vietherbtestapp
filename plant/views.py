@@ -111,16 +111,25 @@ def detailgenus(request,genus_id):
 def search_titles(request):
 	if request.method == 'POST':
 		search_text = request.POST['search_text']
+		
 		if search_text > '':
-			plants = Plant.objects.filter(plant_engname__icontains=search_text) 
+			
+			typelan = request.POST['typelan']
+			
+			if typelan == "EN":
+				plants = Plant.objects.filter(plant_engname__icontains=search_text)
+			else:
+				plants = Plant.objects.filter(plant_vnname__icontains=search_text) 
 		else:
 			plants = Plant.objects.none()
 			text = 1
+			typelan = ""
 	else:
 		search_text = ""
+		typelan = ""
 
 	
-	return render(request,'plant/ajax_search.html', {'plants': plants})
+	return render(request,'plant/ajax_search.html', {'plants': plants, 'typelan': typelan})
 
 
 class ChartData(APIView):
@@ -158,3 +167,4 @@ def error_404(request):
 def error_500(request):
         data = {}
         return render(request,'plant/error_500.html', data)
+

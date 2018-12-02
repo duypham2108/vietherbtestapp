@@ -1,4 +1,4 @@
-$(function(){
+$(function (){
 	
 	$('#search').keyup(function() {
 
@@ -7,7 +7,8 @@ $(function(){
 			url: "search/",
 			data: {
 				'search_text' : $('#search').val(),
-				'csrfmiddlewaretoken' : $("input[name=csrfmiddlewaretoken").val()
+				'csrfmiddlewaretoken' : $("input[name=csrfmiddlewaretoken").val(),
+				'typelan': $('#sellan').val(),
 
 			},
 			success: searchSuccess,
@@ -17,7 +18,9 @@ $(function(){
 	});
 });
 
+
 function searchSuccess(data, textStatus, jqXHR)
-{
+{	
+	$('#search-results').css('display', 'block'),
 	$('#search-results').html(data);
 }
