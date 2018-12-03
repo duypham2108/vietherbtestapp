@@ -189,8 +189,24 @@
 </script> -->
 <script type="text/javascript">
   $('#sellan').change(function() {
-    $('#search').val(''),
+    $('#search').val('');
+    if($('#sellan').val() == "VN") {
+      $('#search').attr("placeholder",'Nhập từ khóa...');
+    } 
+    else {
+      $('#search').attr("placeholder",'Enter your search...');
+    }
+
+    
     $('#search-results').css('display', 'none');
   }); 
+
+  
+$('#search').keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+  if (keycode == '13') {
+    return false;
+  }
+});
 </script>
 </html>

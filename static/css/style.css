@@ -1162,7 +1162,7 @@ ul.manual-searchresults {
 
     background:#fff;
 
-    border:1px solid #E0E0E0;
+
 
     list-style:none;
 
@@ -1667,5 +1667,8 @@ img.center {
 .search-show{
     padding-left: 40px;
     padding-right: 99px;
+}
+.col-md-3{
+    visibility: hidden;
 }
 }
