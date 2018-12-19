@@ -174,7 +174,7 @@ class Plant(models.Model):
     log_box_plot2 = models.IntegerField(blank=True, null=True)
     familia = models.ForeignKey(Familia, models.DO_NOTHING, db_column='Familia_id', blank=True, null=True)  # Field name made lowercase.
     genus = models.ForeignKey(Genus, models.DO_NOTHING, db_column='Genus_id', blank=True, null=True)  # Field name made lowercase.
-    
+    url_gbif = models.CharField(max_length=255, blank=True, null=True)
    
     def __str__(self):
         return self.plant_engname
