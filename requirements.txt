@@ -35,7 +35,7 @@ python-dateutil==2.6.1
 python-pptx==0.6.5
 python-telegram-bot==5.0.0
 pytz==2017.2
-PyYAML==3.12
+PyYAML==5.1
 pyzabbix==0.7.4
 reportlab==3.4.0
 requests==2.13.0
