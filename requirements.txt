@@ -26,7 +26,7 @@ pluggy==0.6.0
 ply==3.10
 protobuf==3.1.0
 psycopg2==2.7.4
-py==1.5.2
+py==1.10.0
 pycryptodome==3.4.9
 PyMySQL==0.8.0
 pyparsing==2.2.0
