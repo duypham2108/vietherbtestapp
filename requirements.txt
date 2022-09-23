@@ -24,7 +24,7 @@ pdfminer.six==20170720
 Pillow==8.1.1
 pluggy==0.6.0
 ply==3.10
-protobuf==3.1.0
+protobuf==3.18.3
 psycopg2==2.7.4
 py==1.5.2
 pycryptodome==3.4.9
